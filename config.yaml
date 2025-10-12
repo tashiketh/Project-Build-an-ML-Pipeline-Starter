@@ -2,6 +2,8 @@ main:
   components_repository: "https://github.com/udacity/Project-Build-an-ML-Pipeline-Starter.git#components"
   # All the intermediate files will be copied to this directory at the end of the run.
   # Set this to null if you are running in prod
+  local_components_dir: "${hydra:runtime.cwd}/src"
+  # Local run location for components.
   project_name: nyc_airbnb
   experiment_name: development
   steps: all
@@ -11,6 +13,7 @@ etl:
   max_price: 350  # dollars
 data_check:
   kl_threshold: 0.2
+  reference_artifact: "clean_sample.csv:v0"
 modeling:
   # Fraction of data to use for test (the remaining will be used for train and validation)
   test_size: 0.2
