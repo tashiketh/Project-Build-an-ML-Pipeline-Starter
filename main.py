@@ -132,6 +132,5 @@ def go(config: DictConfig):
             )
             pass
 
-
 if __name__ == "__main__":
     go()
