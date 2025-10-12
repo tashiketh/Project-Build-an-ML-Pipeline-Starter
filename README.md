@@ -1,3 +1,25 @@
+## Repro & Links
+
+- **GitHub repo**: https://github.com/tashiketh/Project-Build-an-ML-Pipeline-Starter
+- **Weights & Biases project**: https://wandb.ai/jalb107-na/nyc_airbnb
+
+
+### Reproduce v1.0.3 (expected to fail on sample2.csv)
+
+mlflow run https://github.com/tashiketh/Project-Build-an-ML-Pipeline-Starter.git -v v1.0.3 -P steps=download,basic_cleaning,data_check,data_split,train_random_forest -P "hydra_options=etl.sample=sample2.csv"
+
+### Reproduce v1.0.4 (expected to succeed on sample2.csv)
+
+mlflow run https://github.com/tashiketh/Project-Build-an-ML-Pipeline-Starter.git -v v1.0.4 -P steps=download,basic_cleaning,data_check,data_split,train_random_forest -P "hydra_options=etl.sample=sample2.csv"
+
+
+# Notes
+
+v1.0.3 lacks the NYC bounds cleaning; data_check fails on sample2.csv.
+
+v1.0.4 adds NYC latitude/longitude filtering in basic_cleaning; pipeline trains successfully.
+
+
 # Build an ML Pipeline for Short-Term Rental Prices in NYC
 You are working for a property management company renting rooms and properties for short periods of 
 time on various rental platforms. You need to estimate the typical price for a given property based 
@@ -31,6 +53,7 @@ Please ensure you are using one of the supported OS versions to avoid compatibil
 ### Python Requirement
 
 This project requires **Python 3.10**. Please ensure that you have Python 3.10 installed and set as the default version in your environment to avoid any runtime issues.
+- Note: As per update, Python 3.13 is used.
 
 ### Fork the Starter kit
 Go to [https://github.com/udacity/Project-Build-an-ML-Pipeline-Starter](https://github.com/udacity/Project-Build-an-ML-Pipeline-Starter)
